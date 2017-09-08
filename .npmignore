@@ -6,6 +6,7 @@
 !/ts/d.ts/core.d.ts
 
 .npmignore
+.gitignore
 bower.json
 gulpfile.js
 index.html

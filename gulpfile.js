@@ -12,7 +12,6 @@ gulp.task('clean', function() {
 gulp.task('ts-scripts', function() {
     var files = [
         'ts/build/_helpers.js',
-        'ts/build/c_base.js',
         'ts/build/core.js',
         'ts/build/t_test.js',
     ];

@@ -1,0 +1,32 @@
+{
+  "name": "f14-l10n",
+  "description": "This is simple l10n app for localizing your js apps.",
+  "main": "/dist/js/app.js",
+  "authors": [
+    "f14shm4n"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "l10n",
+    "js",
+    "javascript",
+    "ts",
+    "typescript"
+  ],
+  "homepage": "https://github.com/f14shm4n/f14.l10n-ts",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "/.vscode/",
+    "/ts/*",
+    "!/ts/d.ts/",
+    "/ts/d.ts/*",
+    "!/ts/d.ts/core.d.ts",
+    "gulpfile.js",
+    "index.html",
+    "tsconfig.json"
+  ]
+}

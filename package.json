@@ -1,8 +1,26 @@
 {
     "name": "f14-l10n",
     "version": "1.0.0",
-    "private": true,
-    "dependencies": {
+    "description": "This is simple l10n app for localizing your js apps.",
+    "main": "/dist/js/app.js",
+    "author": {
+        "name": "f14shm4n",
+        "email": "uraborg@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/f14shm4n/f14.l10n-ts"
+    },    
+    "license": "MIT",
+    "keywords": [
+        "l10n",
+        "js",
+        "javascript",
+        "ts",
+        "typescript"
+    ],
+    "dependencies": {},
+    "devDependencies": {
         "gulp": "^3.9.1",
         "gulp-concat": "2.6.1",
         "gulp-uglify": "^3.0.0",
@@ -11,7 +29,5 @@
         "merge-stream": "^1.0.1",
         "del": "3.0.0"
     },
-    "devDependencies": {},
-    "scripts": {        
-    }
+    "scripts": {}
 }

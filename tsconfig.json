@@ -6,7 +6,7 @@
         "allowJs": false,
         "checkJs": true,
         "declaration": true,
-        "declarationDir": "ts/d.ts",
+        "declarationDir": "ts/d.ts",        
         "noEmitHelpers": true,
         "alwaysStrict": true,
         "outDir": "ts/build"

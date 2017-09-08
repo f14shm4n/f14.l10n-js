@@ -1,8 +1,9 @@
-.vscode/
-node_modules/
+/.vscode/
+/node_modules/
 
-ts/*
-!ts/d.ts/core.d.ts
+/ts/*
+/ts/d.ts/*
+!/ts/d.ts/core.d.ts
 
 .npmignore
 bower.json

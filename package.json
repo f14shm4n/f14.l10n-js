@@ -1,6 +1,6 @@
 {
   "name": "f14-l10n",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "This is simple l10n app for localizing your js apps.",
   "main": "/dist/js/app.js",
   "author": {

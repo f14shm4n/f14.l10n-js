@@ -13,8 +13,8 @@ namespace f14.L10n.Tests {
             this.AddEventListeners();
         }
 
-        public GetProvider(): IL10nProvider {
-            return window[this._providerPropName] as IL10nProvider;
+        public GetProvider(): IL10NProvider {
+            return window[this._providerPropName] as IL10NProvider;
         }
 
         protected AddData() {

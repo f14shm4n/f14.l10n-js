@@ -16,6 +16,27 @@ bower: `bower install f14-l10n`
 
 **The output package also has the d.ts files for typescript using.**
 
+## Ok. How it works?
+
+Your steps:
+
+1. Configure l10n provider if needed.
+
+2. Adds localized string maps.
+
+3. Get localized string by key where you need it.
+
+How to work default l10n provider:
+
+1. Search the localized string for the current locale by the given key. Current locale value takes from `navigator.language`.
+
+2. Search the localized string for the default locale if the specified key not found in the string map for the current locale.
+
+3. Search localized the string by the given key in the all defined locales if specified key not found in the 1,2 steps.
+
+4. If localized string does not founds, returns `undefiend`.
+
+
 ## Using
 
 By default l10n provider is already configured to use:

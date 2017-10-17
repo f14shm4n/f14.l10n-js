@@ -12,11 +12,21 @@ gulp.task('clean', function() {
 gulp.task('ts-scripts', function() {
     var files = [
         'ts/build/_helpers.js',
-        'ts/build/core.js',
-        'ts/build/t_test.js',
+        'ts/build/core.js'        
     ];
     return gulp.src(files)
         .pipe(concat('app.js'))
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('ts-with-test-scripts', function() {
+    var files = [
+        'ts/build/_helpers.js',
+        'ts/build/core.js',       
+        'ts/build/t_test.js'
+    ];
+    return gulp.src(files)
+        .pipe(concat('app_t.js'))
         .pipe(gulp.dest('dist/js'));
 });
 

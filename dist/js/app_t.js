@@ -131,3 +131,96 @@ var f14;
         L10n.Localizer = Localizer;
     })(L10n = f14.L10n || (f14.L10n = {}));
 })(f14 || (f14 = {}));
+
+"use strict";
+var f14;
+(function (f14) {
+    var L10n;
+    (function (L10n) {
+        var Tests;
+        (function (Tests) {
+            var DefaultL10nProviderTest = (function () {
+                function DefaultL10nProviderTest() {
+                    this._providerPropName = "l10nProvider";
+                    var settings = new L10n.Configuration();
+                    //settings.DefaultLocale = 'fr';
+                    //f14.L10n.Setup(settings);
+                    this.AddData();
+                    this.PrintStringKeys();
+                    this.AddEventListeners();
+                }
+                DefaultL10nProviderTest.prototype.GetProvider = function () {
+                    return f14.L10n.Localizer();
+                };
+                DefaultL10nProviderTest.prototype.AddData = function () {
+                    var provider = this.GetProvider();
+                    provider.AddLocale("ru", {
+                        "test.hello.world": "Привет мир!",
+                        "test.title.download.counter": "Счетчик загрузок",
+                    });
+                    provider.AddLocale("en", {
+                        "test.hello.world": "Hello world!",
+                        "test.title.download.counter": "Download counter",
+                        "test.en.locale.value": "String value for en locale only.",
+                        "test.non.ru.value": "RU locale does not contain this string.",
+                    });
+                    provider.AddLocale("fr", {
+                        "test.hello.world": "Bonjour le monde!",
+                        "test.title.download.counter": "Compteur de téléchargement",
+                        "test.non.ru.value": "RU locale ne contient pas cette chaîne.",
+                    });
+                };
+                DefaultL10nProviderTest.prototype.PrintStringKeys = function () {
+                    var provider = this.GetProvider();
+                    var locales = provider.GetLocales();
+                    var keys = {};
+                    for (var i in locales) {
+                        var loc = locales[i];
+                        for (var j in loc) {
+                            if (keys[j]) {
+                                keys[j] = keys[j] + "," + i;
+                            }
+                            else {
+                                keys[j] = i;
+                            }
+                        }
+                    }
+                    var keyTable = document.querySelector("#key_table");
+                    if (keyTable) {
+                        for (var i in keys) {
+                            var row = keyTable.insertRow();
+                            var cell_key = row.insertCell(0);
+                            var cell_supported_locs = row.insertCell(1);
+                            cell_key.appendChild(document.createTextNode(i));
+                            cell_supported_locs.appendChild(document.createTextNode(keys[i]));
+                        }
+                    }
+                };
+                DefaultL10nProviderTest.prototype.AddEventListeners = function () {
+                    var _this = this;
+                    var getLocBtn = document.querySelector("#get_loc_string");
+                    if (getLocBtn) {
+                        getLocBtn.addEventListener('click', function (e) {
+                            var provider = _this.GetProvider();
+                            var inputValue = document.querySelector("#input_string_key").value;
+                            var localizedString = provider.GetString(inputValue);
+                            if (localizedString) {
+                                document.querySelector("#output_localized_string").appendChild(_this.CreateItem("[navigator.language: " + navigator.language + "] " + localizedString));
+                            }
+                            else {
+                                document.querySelector("#output_localized_string").appendChild(_this.CreateItem("No localized string for key: " + inputValue));
+                            }
+                        }, false);
+                    }
+                };
+                DefaultL10nProviderTest.prototype.CreateItem = function (text) {
+                    var item = document.createElement("div");
+                    item.innerHTML = text;
+                    return item;
+                };
+                return DefaultL10nProviderTest;
+            }());
+            Tests.DefaultL10nProviderTest = DefaultL10nProviderTest;
+        })(Tests = L10n.Tests || (L10n.Tests = {}));
+    })(L10n = f14.L10n || (f14.L10n = {}));
+})(f14 || (f14 = {}));

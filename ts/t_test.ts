@@ -6,15 +6,15 @@ namespace f14.L10n.Tests {
         constructor() {
             let settings = new Configuration();
             //settings.DefaultLocale = 'fr';
+            //f14.L10n.Setup(settings);
 
-            f14.L10n.Setup();
             this.AddData();
             this.PrintStringKeys();
             this.AddEventListeners();
         }
 
-        public GetProvider(): IL10NProvider {
-            return window[this._providerPropName] as IL10NProvider;
+        public GetProvider(): IL10NProvider {            
+            return f14.L10n.Localizer();
         }
 
         protected AddData() {

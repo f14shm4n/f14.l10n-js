@@ -104,9 +104,9 @@ namespace f14.L10n {
          */
         DefaultLocale?: string;
         /**
-         * Sets the IL10NProvider as window property with property name WindowPartProperty. Default: true.
+         * Sets the IL10NProvider as window property with property name WindowPartProperty.
          */
-        AsWindowPart?: boolean = true;
+        AsWindowPart?: boolean = false;
         /**
          * This name using if AsWindowPart is true. Default: l10nProvider.
          */

@@ -18,7 +18,7 @@ bower: `bower install f14-l10n`
 
 ## Ok. How it works?
 
-Your steps:
+**Your steps:**
 
 1. Configure l10n provider if needed.
 
@@ -26,7 +26,7 @@ Your steps:
 
 3. Get localized string by key where you need it.
 
-How to work default l10n provider:
+**How to default l10n provider works:**
 
 1. Search the localized string for the current locale by the given key. Current locale value takes from `navigator.language`.
 

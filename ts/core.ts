@@ -144,4 +144,13 @@ namespace f14.L10n {
             window[Config.WindowPartProperty] = Config.L10nProvider;
         }
     }
+    /**
+     * Returns configured IL10NProvider or throws exception.
+     */
+    export function Localizer(): IL10NProvider {
+        if (!Config.L10nProvider) {
+            throw "L10NProvider not initialized. Call 'Setup' method to do this.";
+        }
+        return Config.L10nProvider;
+    }
 }

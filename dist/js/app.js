@@ -13,18 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 
 "use strict";
-
-"use strict";
 var f14;
 (function (f14) {
     var L10n;
     (function (L10n) {
-        var DefaultL10nProvider = (function () {
-            function DefaultL10nProvider() {
+        var DefaultL10NProvider = (function () {
+            function DefaultL10NProvider() {
                 this._locales = {};
                 this._currentLang = navigator.language;
             }
-            DefaultL10nProvider.prototype.AddLocale = function (localeKey, localeData) {
+            DefaultL10NProvider.prototype.AddLocale = function (localeKey, localeData) {
                 // Createss new locale if not exist.
                 if (!this._locales[localeKey]) {
                     this._locales[localeKey] = {};
@@ -36,10 +34,10 @@ var f14;
                     currentLocalData[key] = localeData[key];
                 }
             };
-            DefaultL10nProvider.prototype.GetString = function (stringKey) {
+            DefaultL10NProvider.prototype.GetString = function (stringKey) {
                 return this.GetStringForLocale(this._currentLang, stringKey);
             };
-            DefaultL10nProvider.prototype.GetStringForLocale = function (localeKey, stringKey) {
+            DefaultL10NProvider.prototype.GetStringForLocale = function (localeKey, stringKey) {
                 // Tries to find target string for the given local key.
                 var stringData = this.getLocalizedString(localeKey, stringKey);
                 if (stringData) {
@@ -60,28 +58,49 @@ var f14;
                     }
                 }
             };
-            DefaultL10nProvider.prototype.GetLocales = function () {
+            DefaultL10NProvider.prototype.GetLocales = function () {
                 return this._locales;
             };
-            DefaultL10nProvider.prototype.getLocalizedString = function (localeKey, stringKey) {
+            DefaultL10NProvider.prototype.getLocalizedString = function (localeKey, stringKey) {
                 if (this._locales[localeKey]) {
                     return this._locales[localeKey][stringKey];
                 }
             };
-            return DefaultL10nProvider;
+            return DefaultL10NProvider;
         }());
-        L10n.DefaultL10nProvider = DefaultL10nProvider;
+        /**
+         * Configuration for f14-l10n.
+         */
         var Configuration = (function () {
             function Configuration() {
+                /**
+                 * Trun on\off debug mode. Default: false.
+                 */
                 this.DEBUG = false;
+                /**
+                 * Sets the IL10NProvider as window property with property name WindowPartProperty. Default: true.
+                 */
                 this.AsWindowPart = true;
+                /**
+                 * This name using if AsWindowPart is true. Default: l10nProvider.
+                 */
                 this.WindowPartProperty = "l10nProvider";
-                this.L10nProvider = new DefaultL10nProvider();
+                /**
+                 * Specifed IL10NProvider. Default: DefaultL10NProvider.
+                 */
+                this.L10nProvider = new DefaultL10NProvider();
             }
             return Configuration;
         }());
         L10n.Configuration = Configuration;
+        /**
+         * Configuration instance.
+         */
         L10n.Config = new Configuration();
+        /**
+         * Setup the L10NProvider.
+         * @param settings User configuration.
+         */
         function Setup(settings) {
             if (settings) {
                 for (var p in settings) {
@@ -90,7 +109,7 @@ var f14;
             }
             if (!L10n.Config.L10nProvider) {
                 console.log("L10nProvider is undefined or null. Create default l10nProvider.");
-                L10n.Config.L10nProvider = new DefaultL10nProvider();
+                L10n.Config.L10nProvider = new DefaultL10NProvider();
             }
             if (L10n.Config.AsWindowPart) {
                 if (!L10n.Config.WindowPartProperty || L10n.Config.WindowPartProperty.length === 0) {
@@ -100,6 +119,16 @@ var f14;
             }
         }
         L10n.Setup = Setup;
+        /**
+         * Returns configured IL10NProvider or throws exception.
+         */
+        function Localizer() {
+            if (!L10n.Config.L10nProvider) {
+                throw "L10NProvider not initialized. Call 'Setup' method to do this.";
+            }
+            return L10n.Config.L10nProvider;
+        }
+        L10n.Localizer = Localizer;
     })(L10n = f14.L10n || (f14.L10n = {}));
 })(f14 || (f14 = {}));
 
@@ -113,9 +142,9 @@ var f14;
             var DefaultL10nProviderTest = (function () {
                 function DefaultL10nProviderTest() {
                     this._providerPropName = "l10nProvider";
-                    f14.L10n.Setup({
-                        DefaultLocale: 'fr'
-                    });
+                    var settings = new L10n.Configuration();
+                    //settings.DefaultLocale = 'fr';
+                    f14.L10n.Setup();
                     this.AddData();
                     this.PrintStringKeys();
                     this.AddEventListeners();

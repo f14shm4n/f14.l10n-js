@@ -66,4 +66,8 @@ declare namespace f14.L10n {
      * @param settings User configuration.
      */
     function Setup(settings?: Configuration): void;
+    /**
+     * Returns configured IL10NProvider or throws exception.
+     */
+    function Localizer(): IL10NProvider;
 }

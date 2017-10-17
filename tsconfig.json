@@ -4,7 +4,6 @@
         "module": "commonjs",
         "sourceMap": false,
         "allowJs": false,
-        "checkJs": true,
         "declaration": true,
         "declarationDir": "ts/d.ts",        
         "noEmitHelpers": true,

@@ -2,7 +2,6 @@
     "name": "f14-l10n",
     "description": "This is simple l10n app for localizing your js apps.",
     "main": "/dist/js/app.js",
-    "version": "1.0.5",
     "authors": [
         "f14shm4n"
     ],

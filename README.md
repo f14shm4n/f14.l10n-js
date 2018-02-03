@@ -41,7 +41,7 @@ bower: `bower install f14-l10n`
 
 By default l10n provider is already configured to use:
 
-[TS] Create localized map and use it: 
+Typescript:
 
 ```
             // Get l10nProvider
@@ -84,7 +84,7 @@ By default l10n provider is already configured to use:
             let localizedString = provider.GetString(locKey);
 ```
 
-[JS] Create localized map and use it: 
+Javascript:
 
 ```
 <script type="text/javascript">
@@ -133,52 +133,30 @@ By default l10n provider is already configured to use:
 
 Also for the localizer some settings are defined:
 
-[TS code]
-
-```
-        /**
-         * Trun on\off debug mode. Default: false.
-         */
-        DEBUG?: boolean = false;
-        /**
-         * Setup default locale name. 
-         * If a localized string is not found for the current locale, it will search in the default locale.
-         */
-        DefaultLocale?: string;
-        /**
-         * Sets the IL10NProvider as window property with property name WindowPartProperty.
-         */
-        AsWindowPart?: boolean = false;
-        /**
-         * This name using if AsWindowPart is true. Default: l10nProvider.
-         */
-        WindowPartProperty?: string = "l10nProvider";
-        /**
-         * Specifed IL10NProvider. Default: DefaultL10NProvider.
-         */
-        L10nProvider?: IL10NProvider = new DefaultL10NProvider();
-```
-
-The explanations for `L10nSProvider` is a specific implementation of the IL10nProvider. You can create your own row provider using the provided basic interface, if needed.
+| Key | Default value | Description |
+|-----|---------------|-------------|
+| DEBUG | false | Trun on\off debug mode. |
+| DefaultLocale | undefined | If a localized string is not found for the current locale, it will search in the default locale. |
+| L10nProvider | DefaultL10NProvider | This is a specific implementation of the IL10nProvider. You can create your own provider using the interface, if needed. |
 
 In order to use the config you need to call the following method: 
 
-[TS]
+Typescript:
 
 ```
             let settings = new Configuration();
             settings.DefaultLocale = 'en';
-            settings.AsWindowPart = true;
+            settings.DEBUG = true;
             ...
             f14.L10n.Setup(settings);
 ```
 
-[JS]
+Javascript:
 
 ```
             f14.L10n.Setup({
+               DEBUG = true,
                DefaultLocale = 'en',
-               AsWindowPart = true,
                ...
             });
 ```

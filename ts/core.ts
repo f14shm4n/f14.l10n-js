@@ -50,6 +50,7 @@ namespace f14.L10n {
             for (let key in localeData) {
                 currentLocalData[key] = localeData[key];
             }
+            
         }
 
         GetString(stringKey: string): string {

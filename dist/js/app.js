@@ -17,7 +17,7 @@ var f14;
 (function (f14) {
     var L10n;
     (function (L10n) {
-        var DefaultL10NProvider = (function () {
+        var DefaultL10NProvider = /** @class */ (function () {
             function DefaultL10NProvider() {
                 this._locales = {};
                 this._currentLang = navigator.language;
@@ -71,7 +71,7 @@ var f14;
         /**
          * Configuration for f14-l10n.
          */
-        var Configuration = (function () {
+        var Configuration = /** @class */ (function () {
             function Configuration() {
                 /**
                  * Trun on\off debug mode. Default: false.
